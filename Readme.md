@@ -489,28 +489,7 @@ Esta tabla documenta la evolución de los requisitos a lo largo del proceso de v
 | (Nuevo) RF-09 | No existía | Añadido requisito para indicación visual en dispositivo | Necesidad de diagnóstico rápido in situ | Bajo: Requiere LED adicional | Operadores de Planta |
 | RNF-04 | "Duración de batería de 12 meses" | Ajustado a "Duración de batería de 6 meses" | Requisito inicial poco realista dado el entorno | Alto: Afecta a planificación de mantenimiento | Validación Técnica |
 
-## Flujo de Información y Dependencias
 
-Este diagrama documenta las dependencias entre requisitos y el flujo de información en el sistema.
-
-```plaintext
-RF-01: Adquisición de Datos
-    ↓
-RF-02: Procesamiento de Datos
-    ↓
-RF-04: Corrección de Errores ← RNF-08: Resistencia a Interferencias
-    ↓
-RF-05: Cifrado de Datos ← RNF-03: Seguridad
-    ↓
-RF-03: Implementación MQTT ← RNF-01: Rendimiento
-    ↓
-Servidor Central
-
-Paralelo a este flujo:
-- RF-06: Gestión de Energía → Afecta a todos los procesos
-- RF-07: Actualización Remota → Sistema completo
-- RF-08: Diagnóstico y Registro → Sistema completo
-- RF-09: Indicadores Locales → Interfaz de Hardware
 
 Esta metodología ha permitido refinar significativamente el documento de requisitos, asegurando que el sistema final responda mejor a las necesidades reales del entorno industrial en el que operará.
 ### 6. Diagrama del Sistema
