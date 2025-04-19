@@ -285,3 +285,7 @@ Los usuarios directos del sistema son:
 - Pruebas de estrés para verificar la respuesta ante situaciones críticas
 - Evaluación del consumo energético en diferentes escenarios
 - Verificación de la seguridad mediante pruebas de penetración
+
+### 6. Diagrama del Sistema
+
+![Diagrama de arquitectura](./DiagramadelSistema.png "Arquitectura del sistema IoT")
