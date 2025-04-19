@@ -267,3 +267,21 @@ Los usuarios directos del sistema son:
 - Compatibilidad de los algoritmos de cifrado con los recursos disponibles
 - Estabilidad de la red inalámbrica en el entorno industrial
 - Capacidad del servidor para procesar el volumen de datos generado
+
+### 5. Criterios de Aceptación y Validación
+
+#### 5.1 Criterios de Aceptación
+
+- El firmware debe instalarse correctamente en el hardware objetivo
+- Debe establecer comunicación efectiva con el servidor central
+- Debe demostrar la transmisión segura de datos en tiempo real
+- Debe operar dentro de los parámetros de rendimiento establecidos
+- La vida útil de la batería debe cumplir con las especificaciones
+
+#### 5.2 Plan de Validación
+
+- Pruebas de laboratorio simulando condiciones industriales
+- Pruebas de campo en la planta de manufactura
+- Pruebas de estrés para verificar la respuesta ante situaciones críticas
+- Evaluación del consumo energético en diferentes escenarios
+- Verificación de la seguridad mediante pruebas de penetración
