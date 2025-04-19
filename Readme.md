@@ -286,6 +286,159 @@ Los usuarios directos del sistema son:
 - Evaluación del consumo energético en diferentes escenarios
 - Verificación de la seguridad mediante pruebas de penetración
 
+
+# Simulación de Interacción con Stakeholders para Validación de Requisitos
+
+## Propósito
+
+Este documento simula las interacciones con diferentes stakeholders durante el proceso de validación de requisitos para el Sistema de Comunicación IoT Industrial. El objetivo es representar cómo se recopilaron las perspectivas de los distintos interesados para refinar y mejorar los requisitos iniciales.
+
+## Participantes en la Simulación
+
+- **Ingenieros de Mantenimiento**: Responsables del mantenimiento preventivo y correctivo en la planta
+- **Operadores de Planta**: Personal que supervisa la operación diaria de la maquinaria
+- **Administradores del Sistema**: Encargados de gestionar la infraestructura tecnológica
+- **Especialistas en Seguridad Industrial**: Responsables de la seguridad y cumplimiento normativo
+- **Expertos en Firmware**: Ingenieros especializados en desarrollo de firmware para sistemas embebidos
+- **Especialistas en Comunicaciones Inalámbricas**: Expertos en protocolos de comunicación IoT
+
+## Metodología de la Simulación
+
+La simulación se estructuró en tres fases:
+
+1. **Presentación de Requisitos**: Exposición de los requisitos iniciales a cada grupo de stakeholders
+2. **Discusión Guiada**: Debate estructurado sobre las fortalezas y debilidades de los requisitos
+3. **Captura de Feedback**: Documentación sistemática de sugerencias y preocupaciones
+
+## Simulación de Interacciones
+
+### 1. Sesión con Ingenieros de Mantenimiento
+
+**Presentación**: Se expusieron los requisitos relacionados con la adquisición de datos y transmisión al servidor central.
+
+**Feedback principal**:
+
+> "La frecuencia de muestreo propuesta de 10 muestras por segundo es excesiva para algunos parámetros como temperatura, que no cambia tan rápidamente. Esto podría afectar negativamente la duración de la batería sin aportar valor adicional."
+
+> "Necesitamos que el sistema priorice la transmisión de alertas críticas sobre los datos rutinarios. No veo este requisito claramente definido."
+
+**Ajustes sugeridos**:
+- Implementar frecuencias de muestreo variables según el tipo de sensor
+- Añadir un sistema de priorización de mensajes en la implementación MQTT
+- Incluir capacidad de configurar umbrales de alerta personalizados
+
+### 2. Sesión con Operadores de Planta
+
+**Presentación**: Se expusieron los requisitos relacionados con la interfaz de usuario y alertas.
+
+**Feedback principal**:
+
+> "El tiempo de respuesta de 500ms podría no ser suficiente en situaciones críticas. Preferimos sacrificar algo de duración de batería por mayor velocidad en ciertos sensores críticos de seguridad."
+
+> "Necesitamos algún indicador visual en el dispositivo mismo, no solo alertas en el servidor central. Por ejemplo, un LED que cambie de color cuando hay problemas de comunicación."
+
+**Ajustes sugeridos**:
+- Redefinir los requisitos de latencia para diferentes clases de sensores
+- Añadir requisito para indicación visual local del estado del dispositivo
+- Incluir modos de operación "críticos" con menor latencia y mayor consumo energético
+
+### 3. Sesión con Administradores del Sistema
+
+**Presentación**: Se expusieron los requisitos relacionados con la seguridad, actualizaciones y mantenimiento.
+
+**Feedback principal**:
+
+> "El requisito de actualización remota es crucial, pero debe incluir mecanismos de rollback automático en caso de fallo. No podemos arriesgarnos a que un dispositivo quede inoperativo tras una actualización."
+
+> "La gestión de claves de seguridad debe integrarse con nuestro sistema actual de administración de credenciales. No queremos un sistema paralelo."
+
+**Ajustes sugeridos**:
+- Añadir capacidad de rollback automático para actualizaciones fallidas
+- Especificar integración con sistemas existentes de gestión de credenciales
+- Mejorar los requisitos de registro para facilitar el diagnóstico remoto
+
+### 4. Sesión con Especialistas en Seguridad Industrial
+
+**Presentación**: Se expusieron los requisitos relacionados con el cifrado y la seguridad de las comunicaciones.
+
+**Feedback principal**:
+
+> "El cifrado AES-128 podría no ser suficiente para todos los datos. Sugerimos implementar diferentes niveles de cifrado según la sensibilidad de los datos."
+
+> "Falta un requisito explícito sobre la protección física del dispositivo contra manipulación. En entornos industriales, esto es tan importante como la seguridad del software."
+
+**Ajustes sugeridos**:
+- Refinar el requisito de seguridad para incluir niveles variables de cifrado
+- Añadir requisitos de seguridad física y detección de manipulación
+- Incluir mecanismos de autenticación multifactor para el acceso administrativo
+
+### 5. Sesión con Expertos en Firmware
+
+**Presentación**: Se expusieron los requisitos técnicos del firmware y arquitectura del sistema.
+
+**Feedback principal**:
+
+> "La implementación completa de MQTT podría ser excesiva para los microcontroladores más básicos. Sugerimos especificar una implementación ligera para dispositivos con recursos limitados."
+
+> "El requisito de mantenibilidad debe ser más específico. Sugerimos adoptar estándares específicos de codificación y documentación para asegurar la consistencia."
+
+**Ajustes sugeridos**:
+- Estratificar los requisitos según las capacidades del hardware
+- Especificar estándares concretos de codificación y documentación
+- Añadir requisitos de pruebas unitarias automatizadas
+
+### 6. Sesión con Especialistas en Comunicaciones Inalámbricas
+
+**Presentación**: Se expusieron los requisitos relacionados con los protocolos de comunicación y manejo de interferencias.
+
+**Feedback principal**:
+
+> "La especificación actual no considera suficientemente los problemas de coexistencia con otras redes inalámbricas industriales. Necesitamos mecanismos de adaptación de canal más robustos."
+
+> "El requisito de resistencia a interferencias debe incluir específicamente la capacidad de operar en frecuencias alternativas en caso de interferencia persistente."
+
+**Ajustes sugeridos**:
+- Ampliar el requisito de resistencia a interferencias
+- Añadir capacidad de selección dinámica de canales de comunicación
+- Incluir pruebas específicas de coexistencia con otros sistemas inalámbricos
+
+## Resultados de la Simulación
+
+La simulación de interacción con stakeholders reveló varios aspectos importantes que no habían sido completamente capturados en los requisitos iniciales:
+
+1. **Flexibilidad vs. Estandarización**: Necesidad de equilibrar la flexibilidad en la configuración con la estandarización para el mantenimiento.
+
+2. **Compensaciones Energía-Rendimiento**: Identificación de escenarios donde los stakeholders prefieren sacrificar duración de batería por mejor rendimiento.
+
+3. **Integración con Sistemas Existentes**: Mayor énfasis en la necesidad de integración con infraestructura existente.
+
+4. **Seguridad Multinivel**: Necesidad de implementar diferentes niveles de seguridad según el tipo de datos y ubicación del sensor.
+
+5. **Indicadores Locales**: Requerimiento no identificado previamente para incluir indicación visual local del estado del dispositivo.
+
+## Matriz de Ajustes Realizados
+
+| Requisito Original | Stakeholder que Sugirió Cambio | Ajuste Realizado |
+|-------------------|--------------------------------|------------------|
+| RF-03: Implementación MQTT | Ingenieros de Mantenimiento | Añadida priorización de mensajes y QoS variable |
+| RNF-01: Rendimiento | Operadores de Planta | Redefinida latencia según criticidad del sensor |
+| RF-07: Actualización Remota | Administradores del Sistema | Añadido mecanismo de rollback automático |
+| RNF-03: Seguridad | Especialistas en Seguridad | Implementados niveles variables de cifrado |
+| RF-01: Adquisición de Datos | Ingenieros de Mantenimiento | Frecuencia de muestreo adaptativa por tipo de sensor |
+| RNF-08: Resistencia a Interferencias | Especialistas en Comunicaciones | Añadida selección dinámica de canales |
+| (Nuevo) RF-09: Indicadores Locales | Operadores de Planta | Añadido requisito para indicación visual en dispositivo |
+
+## Conclusiones de la Simulación
+
+La simulación de interacción con stakeholders demostró ser una herramienta valiosa para:
+
+1. Descubrir requisitos ocultos o implícitos que no surgieron en las fases iniciales
+2. Priorizar requisitos basados en las necesidades reales de los usuarios finales
+3. Identificar y resolver conflictos potenciales entre requisitos
+4. Construir consenso entre diferentes grupos de interés
+5. Validar la viabilidad técnica y operativa de los requisitos propuestos
+
+Esta metodología ha permitido refinar significativamente el documento de requisitos, asegurando que el sistema final responda mejor a las necesidades reales del entorno industrial en el que operará.
 ### 6. Diagrama del Sistema
 
 ![Diagrama de arquitectura](./DiagramadelSistema.png "Arquitectura del sistema IoT")
