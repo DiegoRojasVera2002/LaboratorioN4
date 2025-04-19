@@ -251,3 +251,19 @@ Los usuarios directos del sistema son:
   - Debe implementar algoritmos de filtrado para reducir el impacto del ruido electromagnético
   - Debe validar la integridad de los datos antes de procesarlos
   - Debe detectar y reportar condiciones de interferencia extrema
+
+### 4. Suposiciones y Dependencias
+
+#### 4.1 Suposiciones
+
+- Los sensores utilizados son compatibles con los microcontroladores ARM seleccionados
+- Existe una infraestructura de red inalámbrica que cubre toda la planta de manufactura
+- El servidor central está operativo 24/7 para recibir y procesar los datos
+- Los usuarios finales tienen conocimientos técnicos para interpretar los datos
+
+#### 4.2 Dependencias
+
+- Disponibilidad de librerías optimizadas para MQTT en microcontroladores ARM
+- Compatibilidad de los algoritmos de cifrado con los recursos disponibles
+- Estabilidad de la red inalámbrica en el entorno industrial
+- Capacidad del servidor para procesar el volumen de datos generado
