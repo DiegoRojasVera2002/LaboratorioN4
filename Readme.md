@@ -438,6 +438,80 @@ La simulación de interacción con stakeholders demostró ser una herramienta va
 4. Construir consenso entre diferentes grupos de interés
 5. Validar la viabilidad técnica y operativa de los requisitos propuestos
 
+# Trazabilidad de la Información en el Sistema IoT Industrial
+
+## Matriz de Trazabilidad de Requisitos
+
+La matriz de trazabilidad establece relaciones claras entre los requisitos del sistema y los objetivos de negocio, asegurando que cada funcionalidad contribuya a las metas del proyecto.
+
+### Objetivos de Negocio Identificados
+
+1. **OBJ-1**: Reducir tiempos de inactividad no planificada
+2. **OBJ-2**: Optimizar procesos de mantenimiento preventivo
+3. **OBJ-3**: Mejorar la seguridad en planta industrial
+4. **OBJ-4**: Reducir costos operativos
+5. **OBJ-5**: Cumplir con normativas industriales
+
+### Matriz de Trazabilidad Requisitos-Objetivos
+
+| Requisito | OBJ-1 | OBJ-2 | OBJ-3 | OBJ-4 | OBJ-5 | Stakeholders Relacionados |
+|-----------|-------|-------|-------|-------|-------|---------------------------|
+| RF-01: Adquisición de Datos | ✓ | ✓ | ✓ | ✓ | ✓ | Ing. Mantenimiento, Operadores |
+| RF-02: Procesamiento de Datos | ✓ | ✓ | ✓ | ✓ |  | Ing. Mantenimiento |
+| RF-03: Implementación MQTT | ✓ | ✓ |  | ✓ |  | Administradores del Sistema |
+| RF-04: Corrección de Errores | ✓ |  | ✓ |  | ✓ | Especialistas en Comunicaciones |
+| RF-05: Cifrado de Datos |  |  | ✓ |  | ✓ | Especialistas en Seguridad |
+| RF-06: Gestión de Energía |  | ✓ |  | ✓ |  | Ing. Mantenimiento |
+| RF-07: Actualización Remota | ✓ | ✓ | ✓ | ✓ |  | Administradores del Sistema |
+| RF-08: Diagnóstico y Registro | ✓ | ✓ | ✓ | ✓ | ✓ | Ing. Mantenimiento, Administradores |
+| RF-09: Indicadores Locales | ✓ |  | ✓ |  |  | Operadores de Planta |
+| RNF-01: Rendimiento | ✓ |  | ✓ |  |  | Operadores, Ing. Mantenimiento |
+| RNF-02: Confiabilidad | ✓ | ✓ | ✓ | ✓ | ✓ | Todos los stakeholders |
+| RNF-03: Seguridad |  |  | ✓ |  | ✓ | Especialistas en Seguridad |
+| RNF-04: Eficiencia Energética |  | ✓ |  | ✓ |  | Ing. Mantenimiento |
+| RNF-05: Escalabilidad |  | ✓ |  | ✓ |  | Administradores del Sistema |
+| RNF-06: Portabilidad |  |  |  | ✓ |  | Expertos en Firmware |
+| RNF-07: Mantenibilidad |  | ✓ |  | ✓ |  | Expertos en Firmware |
+| RNF-08: Resistencia a Interferencias | ✓ |  | ✓ |  | ✓ | Especialistas en Comunicaciones |
+
+## Trazabilidad de Cambios en los Requisitos
+
+Esta tabla documenta la evolución de los requisitos a lo largo del proceso de validación.
+
+| ID Requisito | Versión Inicial | Cambio Realizado | Justificación | Impacto | Stakeholder Solicitante |
+|--------------|-----------------|------------------|---------------|---------|-------------------------|
+| RF-03 | "Implementar protocolo MQTT básico" | Añadida priorización de mensajes y QoS variable | Necesidad de priorizar alertas críticas | Alto: Requiere modificar la arquitectura de comunicación | Ingenieros de Mantenimiento |
+| RNF-01 | "Latencia máxima de 500ms para todos los sensores" | Latencia diferenciada según criticidad del sensor | Sensores críticos de seguridad requieren menor latencia | Medio: Requiere categorización de sensores | Operadores de Planta |
+| RF-07 | "Permitir actualizaciones remotas" | Añadido mecanismo de rollback automático | Prevenir dispositivos inoperativos tras actualización fallida | Medio: Incrementa complejidad pero reduce riesgos | Administradores del Sistema |
+| RNF-03 | "Cifrado AES-128 para todos los datos" | Niveles variables de cifrado según sensibilidad | Optimizar recursos para datos no críticos | Bajo: Requiere clasificación de datos | Especialistas en Seguridad |
+| RF-01 | "Frecuencia de muestreo fija" | Muestreo adaptativo por tipo de sensor | Optimizar consumo energético | Alto: Requiere reconsiderar algoritmos de muestreo | Ingenieros de Mantenimiento |
+| RNF-08 | "Filtrado de interferencias básico" | Selección dinámica de canales de comunicación | Entornos industriales con alta interferencia variable | Medio: Requiere capacidades adicionales de RF | Especialistas en Comunicaciones |
+| (Nuevo) RF-09 | No existía | Añadido requisito para indicación visual en dispositivo | Necesidad de diagnóstico rápido in situ | Bajo: Requiere LED adicional | Operadores de Planta |
+| RNF-04 | "Duración de batería de 12 meses" | Ajustado a "Duración de batería de 6 meses" | Requisito inicial poco realista dado el entorno | Alto: Afecta a planificación de mantenimiento | Validación Técnica |
+
+## Flujo de Información y Dependencias
+
+Este diagrama documenta las dependencias entre requisitos y el flujo de información en el sistema.
+
+```plaintext
+RF-01: Adquisición de Datos
+    ↓
+RF-02: Procesamiento de Datos
+    ↓
+RF-04: Corrección de Errores ← RNF-08: Resistencia a Interferencias
+    ↓
+RF-05: Cifrado de Datos ← RNF-03: Seguridad
+    ↓
+RF-03: Implementación MQTT ← RNF-01: Rendimiento
+    ↓
+Servidor Central
+
+Paralelo a este flujo:
+- RF-06: Gestión de Energía → Afecta a todos los procesos
+- RF-07: Actualización Remota → Sistema completo
+- RF-08: Diagnóstico y Registro → Sistema completo
+- RF-09: Indicadores Locales → Interfaz de Hardware
+
 Esta metodología ha permitido refinar significativamente el documento de requisitos, asegurando que el sistema final responda mejor a las necesidades reales del entorno industrial en el que operará.
 ### 6. Diagrama del Sistema
 
