@@ -33,3 +33,36 @@ Desarrollar un firmware robusto para microcontroladores ARM de bajo consumo que 
 - **Eficiencia Energética**: Vida útil de batería de al menos 6 meses
 - **Escalabilidad**: Soporte para hasta 10 sensores por nodo
 - **Resistencia a Interferencias**: Operación en entornos industriales hostiles
+
+# Documento de Requisitos de Software (SRS)
+
+## Sistema de Comunicación IoT Industrial
+
+### 1. Introducción y Alcance
+
+#### 1.1 Propósito
+
+Este documento especifica los requisitos de software para el firmware de un sistema de comunicación inalámbrica en un entorno industrial IoT. El propósito principal es establecer las bases técnicas y funcionales para el desarrollo del firmware que permitirá la comunicación eficiente entre sensores remotos en una planta de manufactura y el servidor central.
+
+#### 1.2 Alcance
+
+El firmware será implementado en microcontroladores ARM de bajo consumo distribuidos en sensores remotos dentro de la planta de manufactura. El sistema permitirá la recolección, procesamiento y transmisión de datos en tiempo real, optimizando el mantenimiento preventivo y reduciendo los tiempos de respuesta ante fallas en la planta.
+
+#### 1.3 Definiciones, Acrónimos y Abreviaturas
+
+- **IoT**: Internet de las Cosas (Internet of Things)
+- **MQTT**: Message Queuing Telemetry Transport, protocolo de comunicación
+- **ARM**: Advanced RISC Machines, arquitectura de procesador
+- **SRS**: Software Requirements Specification (Especificación de Requisitos de Software)
+- **RF**: Radiofrecuencia
+
+#### 1.4 Referencias
+
+- Estándares industriales de comunicación inalámbrica
+- Documentación técnica de microcontroladores ARM
+- Especificaciones del protocolo MQTT
+- Normativas de seguridad industrial
+
+#### 1.5 Visión General
+
+Las siguientes secciones detallan la descripción general del sistema, los requisitos funcionales y no funcionales, y las consideraciones de diseño para el firmware del sistema de comunicación IoT industrial.
