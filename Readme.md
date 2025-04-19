@@ -66,3 +66,38 @@ El firmware será implementado en microcontroladores ARM de bajo consumo distrib
 #### 1.5 Visión General
 
 Las siguientes secciones detallan la descripción general del sistema, los requisitos funcionales y no funcionales, y las consideraciones de diseño para el firmware del sistema de comunicación IoT industrial.
+
+### 2. Descripción General del Sistema
+
+#### 2.1 Perspectiva del Producto
+
+El firmware forma parte de un sistema integral de monitoreo industrial que busca optimizar la operación de una planta de manufactura mediante la recolección y análisis de datos en tiempo real. El firmware actuará como la capa de software encargada de gestionar la comunicación entre los sensores físicos y el servidor central.
+
+#### 2.2 Funciones del Producto
+
+- Gestionar la adquisición de datos desde sensores industriales
+- Procesar y filtrar la información recolectada
+- Transmitir datos de forma inalámbrica al servidor central
+- Implementar mecanismos de seguridad para la comunicación
+- Optimizar el consumo energético de los dispositivos
+
+#### 2.3 Características de los Usuarios
+
+Los usuarios directos del sistema son:
+
+- Ingenieros de mantenimiento: Utilizarán la información del sistema para planificar mantenimientos preventivos.
+- Operadores de planta: Recibirán alertas y monitorearán el funcionamiento de los equipos.
+- Administradores del sistema: Configurarán y gestionarán el sistema de comunicación.
+
+#### 2.4 Restricciones
+
+- El firmware debe operar en microcontroladores ARM con recursos limitados
+- Debe funcionar en ambientes industriales con alta interferencia electromagnética
+- Debe cumplir con estándares de seguridad industrial
+- Debe optimizar el consumo de energía para maximizar la vida útil de las baterías
+
+#### 2.5 Suposiciones y Dependencias
+
+- Se asume la disponibilidad de hardware con capacidades específicas (memoria, procesamiento)
+- El sistema depende de la infraestructura de red inalámbrica existente en la planta
+- Se asume la existencia de un servidor central con capacidad para procesar los datos recibidos
